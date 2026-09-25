@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Pazzle Apps</title>
 
@@ -11,35 +16,103 @@
     content="Pazzle Appsは、シンプルで奥深いロジックパズルゲームを開発しています。"
   >
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="./style.css"
+  >
 </head>
+
 
 <body>
 
-  <header class="hero">
-    <div class="container">
+  <!-- =========================
+       Header
+  ========================== -->
 
-      <p class="eyebrow">Puzzle Game Developer</p>
+  <header class="hero">
+
+    <div class="container hero-container">
+
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+
+        <button
+          id="lang-ja"
+          type="button"
+          onclick="setLanguage('ja')"
+        >
+          日本語
+        </button>
+
+        <button
+          id="lang-en"
+          type="button"
+          onclick="setLanguage('en')"
+        >
+          English
+        </button>
+
+      </div>
+
+
+      <p
+        class="eyebrow"
+        data-ja="パズルゲーム開発"
+        data-en="PUZZLE GAME DEVELOPER"
+      >
+        パズルゲーム開発
+      </p>
+
 
       <h1>Pazzle Apps</h1>
 
+
       <p class="lead">
-        Think. Discover. Solve.<br>
-        シンプルだけど奥深い、ロジックパズルゲームを開発しています。
+
+        <span
+          data-ja="考える。ひらめく。解き明かす。"
+          data-en="Think. Discover. Solve."
+        >
+          考える。ひらめく。解き明かす。
+        </span>
+
+        <br>
+
+        <span
+          data-ja="シンプルだけど奥深い、ロジックパズルゲームを開発しています。"
+          data-en="We create simple yet deep logic puzzle games."
+        >
+          シンプルだけど奥深い、ロジックパズルゲームを開発しています。
+        </span>
+
       </p>
 
     </div>
+
   </header>
 
+
+
+  <!-- =========================
+       Main
+  ========================== -->
 
   <main class="container">
 
     <section class="section">
 
-      <h2>Games</h2>
+      <h2
+        data-ja="ゲーム"
+        data-en="Games"
+      >
+        ゲーム
+      </h2>
+
 
       <div class="app-grid">
 
+
+        <!-- AreaNest -->
         <article class="app-card">
 
           <div class="app-header">
@@ -50,21 +123,32 @@
               class="app-icon"
             >
 
+
             <div>
-              <h3>AreaNest</h3>
+
+              <h3>
+                AreaNest
+              </h3>
+
               <p class="tagline">
                 Shikaku × Gimmicks
               </p>
+
             </div>
 
           </div>
 
-          <p class="app-description">
-            数字が示す面積になるように盤面を長方形に分けていく
-            ロジックパズルに、さまざまなギミックを追加。
-            シンプルなルールから生まれる、
-            ひとクセある問題を楽しめます。
+
+          <p
+            class="app-description"
+            data-ja="数字が示す面積になるように盤面を長方形に分けていくロジックパズルに、さまざまなギミックを追加。シンプルなルールから生まれる、ひとクセある問題を楽しめます。"
+            data-en="A logic puzzle where you divide the board into rectangles based on the given numbers, enhanced with a variety of unique gimmicks. Simple rules lead to challenging and surprising puzzles."
+          >
+            数字が示す面積になるように盤面を長方形に分けていくロジックパズルに、
+            さまざまなギミックを追加。
+            シンプルなルールから生まれる、ひとクセある問題を楽しめます。
           </p>
+
 
           <div class="app-links">
 
@@ -77,16 +161,20 @@
               App Store
             </a>
 
+
             <a
               class="button secondary"
               href="./PrivacyPolicy_AreaNest.html"
+              data-ja="プライバシーポリシー"
+              data-en="Privacy Policy"
             >
-              Privacy Policy
+              プライバシーポリシー
             </a>
 
           </div>
 
         </article>
+
 
       </div>
 
@@ -95,13 +183,194 @@
   </main>
 
 
+
+  <!-- =========================
+       Footer
+  ========================== -->
+
   <footer class="footer">
 
     <div class="container">
-      <p>© 2026 Daisuke Minobe. All rights reserved.</p>
+
+      <p>
+        © 2026 Pazzle Apps.
+        <span
+          data-ja="All rights reserved."
+          data-en="All rights reserved."
+        >
+          All rights reserved.
+        </span>
+      </p>
+
     </div>
 
   </footer>
 
+
+
+  <!-- =========================
+       Language Script
+  ========================== -->
+
+  <script>
+
+    function setLanguage(lang) {
+
+      // HTML language setting
+      document.documentElement.lang = lang;
+
+
+      // Replace text
+      const elements =
+        document.querySelectorAll(
+          '[data-ja][data-en]'
+        );
+
+      elements.forEach(function(element) {
+
+        if (lang === 'ja') {
+          element.textContent =
+            element.dataset.ja;
+        }
+        else {
+          element.textContent =
+            element.dataset.en;
+        }
+
+      });
+
+
+      // Save selected language
+      try {
+
+        localStorage.setItem(
+          'pazzleAppsLanguage',
+          lang
+        );
+
+      }
+      catch (error) {
+
+        // Ignore if localStorage is unavailable
+
+      }
+
+
+      // Button appearance
+      const jaButton =
+        document.getElementById('lang-ja');
+
+      const enButton =
+        document.getElementById('lang-en');
+
+
+      jaButton.classList.toggle(
+        'active',
+        lang === 'ja'
+      );
+
+      enButton.classList.toggle(
+        'active',
+        lang === 'en'
+      );
+
+
+      jaButton.setAttribute(
+        'aria-pressed',
+        lang === 'ja'
+      );
+
+      enButton.setAttribute(
+        'aria-pressed',
+        lang === 'en'
+      );
+
+
+      // Meta description
+      const description =
+        document.querySelector(
+          'meta[name="description"]'
+        );
+
+      if (description) {
+
+        if (lang === 'ja') {
+
+          description.setAttribute(
+            'content',
+            'Pazzle Appsは、シンプルで奥深いロジックパズルゲームを開発しています。'
+          );
+
+        }
+        else {
+
+          description.setAttribute(
+            'content',
+            'Pazzle Apps creates simple yet deep logic puzzle games.'
+          );
+
+        }
+
+      }
+
+    }
+
+
+
+    function getInitialLanguage() {
+
+      // Use saved language first
+      try {
+
+        const savedLanguage =
+          localStorage.getItem(
+            'pazzleAppsLanguage'
+          );
+
+        if (
+          savedLanguage === 'ja' ||
+          savedLanguage === 'en'
+        ) {
+          return savedLanguage;
+        }
+
+      }
+      catch (error) {
+
+        // Ignore if localStorage is unavailable
+
+      }
+
+
+      // Otherwise use browser language
+      const browserLanguage =
+        navigator.language ||
+        navigator.userLanguage ||
+        'en';
+
+
+      if (
+        browserLanguage
+          .toLowerCase()
+          .startsWith('ja')
+      ) {
+        return 'ja';
+      }
+
+
+      return 'en';
+
+    }
+
+
+    // Initialize
+    setLanguage(
+      getInitialLanguage()
+    );
+
+  </script>
+
+
 </body>
+
 </html>
