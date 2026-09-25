@@ -1,13 +1,20 @@
+/* =========================
+   Base
+========================= */
+
 * {
   box-sizing: border-box;
 }
+
 
 html {
   scroll-behavior: smooth;
 }
 
+
 body {
   margin: 0;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -18,96 +25,255 @@ body {
     sans-serif;
 
   background: #f5f7fb;
+
   color: #1f2937;
+
   line-height: 1.7;
+
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 共通幅 */
+
+/* =========================
+   Container
+========================= */
+
 .container {
-  width: min(1100px, calc(100% - 32px));
+  width:
+    min(
+      1100px,
+      calc(100% - 32px)
+    );
+
   margin: 0 auto;
 }
 
-/* 上部 */
+
+
+/* =========================
+   Hero
+========================= */
+
 .hero {
-  background: linear-gradient(
-    135deg,
-    #111827 0%,
-    #1e3a8a 100%
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #111827 0%,
+      #1e3a8a 100%
+    );
 
   color: white;
-  padding: 80px 0 64px;
+
+  padding:
+    80px 0 64px;
 }
 
+
+.hero-container {
+  position: relative;
+}
+
+
 .eyebrow {
-  margin: 0 0 10px;
+  margin:
+    0 0 10px;
+
   font-size: 0.9rem;
+
   font-weight: 700;
+
   letter-spacing: 0.1em;
+
   text-transform: uppercase;
+
   opacity: 0.8;
 }
+
 
 .hero h1 {
   margin: 0;
 
-  font-size: clamp(
-    2.5rem,
-    7vw,
-    4rem
-  );
+  font-size:
+    clamp(
+      2.5rem,
+      7vw,
+      4rem
+    );
 
   line-height: 1.1;
+
+  letter-spacing: -0.03em;
 }
 
-.lead {
-  margin-top: 18px;
-  margin-bottom: 0;
 
-  max-width: 650px;
+.lead {
+  margin:
+    18px 0 0;
+
+  max-width: 700px;
 
   font-size: 1.1rem;
 
-  color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  );
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.92
+    );
 }
 
-/* セクション */
-.section {
-  padding: 56px 0;
+
+
+/* =========================
+   Language Switcher
+========================= */
+
+.language-switcher {
+  position: absolute;
+
+  top: -48px;
+
+  right: 0;
+
+  display: flex;
+
+  gap: 4px;
+
+  padding: 5px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.10
+    );
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.15
+    );
+
+  border-radius: 999px;
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
 }
+
+
+.language-switcher button {
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  padding:
+    7px 13px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.language-switcher button:hover {
+  color: white;
+}
+
+
+.language-switcher button:active {
+  transform: scale(0.97);
+}
+
+
+.language-switcher button.active {
+  background: white;
+
+  color: #1e3a8a;
+}
+
+
+
+/* =========================
+   Sections
+========================= */
+
+.section {
+  padding:
+    56px 0;
+}
+
 
 .section h2 {
-  margin: 0 0 24px;
+  margin:
+    0 0 24px;
 
   font-size: 1.8rem;
 
   color: #111827;
+
+  letter-spacing: -0.02em;
 }
 
-/* アプリ一覧 */
+
+
+/* =========================
+   App Grid
+========================= */
+
 .app-grid {
   display: grid;
 
   grid-template-columns:
     repeat(
       auto-fit,
-      minmax(280px, 1fr)
+      minmax(
+        280px,
+        1fr
+      )
     );
 
   gap: 24px;
 }
 
-/* アプリカード */
+
+
+/* =========================
+   App Card
+========================= */
+
 .app-card {
   background: white;
 
-  border: 1px solid #e5e7eb;
+  border:
+    1px solid #e5e7eb;
 
   border-radius: 24px;
 
@@ -115,10 +281,39 @@ body {
 
   box-shadow:
     0 10px 30px
-    rgba(15, 23, 42, 0.08);
+    rgba(
+      15,
+      23,
+      42,
+      0.08
+    );
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* アプリ名周辺 */
+
+.app-card:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 16px 36px
+    rgba(
+      15,
+      23,
+      42,
+      0.11
+    );
+}
+
+
+
+/* =========================
+   App Header
+========================= */
+
 .app-header {
   display: flex;
 
@@ -129,9 +324,13 @@ body {
   margin-bottom: 20px;
 }
 
+
 .app-icon {
   width: 88px;
+
   height: 88px;
+
+  flex-shrink: 0;
 
   border-radius: 22px;
 
@@ -140,9 +339,15 @@ body {
   background: #f3f4f6;
 
   box-shadow:
-    0 3px 10px
-    rgba(0, 0, 0, 0.12);
+    0 3px 12px
+    rgba(
+      0,
+      0,
+      0,
+      0.12
+    );
 }
+
 
 .app-card h3 {
   margin: 0;
@@ -150,24 +355,39 @@ body {
   font-size: 1.6rem;
 
   color: #111827;
+
+  letter-spacing: -0.02em;
 }
 
+
 .tagline {
-  margin: 5px 0 0;
+  margin:
+    5px 0 0;
 
   font-size: 0.95rem;
 
   color: #6b7280;
 }
 
-/* 説明 */
+
+
+/* =========================
+   App Description
+========================= */
+
 .app-description {
-  margin: 0 0 24px;
+  margin:
+    0 0 24px;
 
   color: #374151;
 }
 
-/* ボタン */
+
+
+/* =========================
+   Buttons
+========================= */
+
 .app-links {
   display: flex;
 
@@ -176,10 +396,12 @@ body {
   gap: 12px;
 }
 
+
 .button {
   display: inline-block;
 
-  padding: 11px 18px;
+  padding:
+    11px 18px;
 
   border-radius: 999px;
 
@@ -189,37 +411,65 @@ body {
 
   transition:
     transform 0.15s ease,
-    background 0.15s ease;
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
+
 .button:hover {
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 }
+
+
+.button:active {
+  transform:
+    translateY(0);
+}
+
 
 .button.primary {
   background: #2563eb;
+
   color: white;
+
+  border:
+    1px solid #2563eb;
 }
+
 
 .button.primary:hover {
   background: #1d4ed8;
+
+  border-color: #1d4ed8;
 }
+
 
 .button.secondary {
   background: white;
 
   color: #2563eb;
 
-  border: 1px solid #bfdbfe;
+  border:
+    1px solid #bfdbfe;
 }
+
 
 .button.secondary:hover {
   background: #eff6ff;
+
+  border-color: #93c5fd;
 }
 
-/* フッター */
+
+
+/* =========================
+   Footer
+========================= */
+
 .footer {
-  padding: 24px 0 40px;
+  padding:
+    24px 0 40px;
 
   text-align: center;
 
@@ -228,26 +478,100 @@ body {
   font-size: 0.9rem;
 }
 
-/* スマホ */
+
+.footer p {
+  margin: 0;
+}
+
+
+
+/* =========================
+   Mobile
+========================= */
+
 @media (max-width: 600px) {
 
   .hero {
-    padding: 56px 0 48px;
+    padding:
+      72px 0 48px;
   }
 
-  .section {
-    padding: 40px 0;
+
+  .language-switcher {
+    top: -52px;
+
+    right: 0;
   }
+
+
+  .language-switcher button {
+    padding:
+      6px 10px;
+
+    font-size: 0.8rem;
+  }
+
+
+  .section {
+    padding:
+      40px 0;
+  }
+
 
   .app-card {
     padding: 22px;
+
+    border-radius: 20px;
   }
+
 
   .app-icon {
     width: 76px;
+
     height: 76px;
 
     border-radius: 19px;
+  }
+
+
+  .app-card h3 {
+    font-size: 1.4rem;
+  }
+
+
+  .lead {
+    font-size: 1rem;
+  }
+
+}
+
+
+
+/* =========================
+   Very Small Screens
+========================= */
+
+@media (max-width: 380px) {
+
+  .app-header {
+    gap: 14px;
+  }
+
+
+  .app-icon {
+    width: 68px;
+
+    height: 68px;
+
+    border-radius: 17px;
+  }
+
+
+  .button {
+    padding:
+      10px 15px;
+
+    font-size: 0.9rem;
   }
 
 }
